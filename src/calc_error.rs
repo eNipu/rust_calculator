@@ -1,5 +1,5 @@
 // Define a custom error type
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub enum CalcError {
     DivisionByZero,
     InvalidOperation,

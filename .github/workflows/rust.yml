@@ -34,4 +34,5 @@ jobs:
       run: cargo test --verbose
 
     - name: Build Python package
-      run: maturin develop
+      run: maturin build --release --strip --manylinux off
+
