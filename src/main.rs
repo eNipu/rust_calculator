@@ -1,6 +1,5 @@
 mod calc_error;
 mod calculator;
-use crate::calc_error::CalcError;
 use crate::calculator::Calculator;
 
 fn main() {
