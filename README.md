@@ -1,4 +1,5 @@
 # Rust Calculator
+![Rust](https://github.com/eNipu/rust_calculator/actions/workflows/rust.yml/badge.svg)
 
 This is a simple calculator library implemented in Rust and exposed to Python using the PyO3 framework.
 

@@ -11,10 +11,6 @@ pyo3 = { version = "0.15", features = ["extension-module"] }
 [dev-dependencies]
 maturin = "0.9"
 
-[[test]]
-name = "calculator_tests"
-path = "tests/calculator_tests.rs"
-
 [lib]
 name = "rust_calculator"
 crate-type = ["cdylib"]
