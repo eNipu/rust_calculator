@@ -24,38 +24,38 @@ impl PyCalculator {
     }
 
     fn add(&self, a: f64, b: f64) -> PyResult<f64> {
-        let gil = Python::acquire_gil();
-        let py = gil.python();
+        // let gil = Python::acquire_gil();
+        // let py = gil.python();
         match self.calc.add(a, b) {
             Ok(result) => Ok(result),
-            Err(err) => Err(map_error(py, err)),
+            Err(err) => Err(map_error(err)),
         }
     }
 
     fn subtract(&self, a: f64, b: f64) -> PyResult<f64> {
-        let gil = Python::acquire_gil();
-        let py = gil.python();
+        // let gil = Python::acquire_gil();
+        // let py = gil.python();
         match self.calc.subtract(a, b) {
             Ok(result) => Ok(result),
-            Err(err) => Err(map_error(py, err)),
+            Err(err) => Err(map_error(err)),
         }
     }
 
     fn multiply(&self, a: f64, b: f64) -> PyResult<f64> {
-        let gil = Python::acquire_gil();
-        let py = gil.python();
+        // let gil = Python::acquire_gil();
+        // let py = gil.python();
         match self.calc.multiply(a, b) {
             Ok(result) => Ok(result),
-            Err(err) => Err(map_error(py, err)),
+            Err(err) => Err(map_error(err)),
         }
     }
 
     fn divide(&self, a: f64, b: f64) -> PyResult<f64> {
-        let gil = Python::acquire_gil();
-        let py = gil.python();
+        // let gil = Python::acquire_gil();
+        // let py = gil.python();
         match self.calc.divide(a, b) {
             Ok(result) => Ok(result),
-            Err(err) => Err(map_error(py, err)),
+            Err(err) => Err(map_error(err)),
         }
     }
 }
@@ -91,7 +91,7 @@ create_exception!(
     pyo3::exceptions::PyException
 );
 
-fn map_error(_py: Python, err: CalcError) -> PyErr {
+fn map_error(err: CalcError) -> PyErr {
     let error_message = format!("{}", err);
     let error_payload = PyCalculatorErrorPayload::new(error_message, err.code());
     PyErr::new::<PyCalculatorError, _>(error_payload)
