@@ -1,4 +1,3 @@
-
 const ERROR_CODE_DIVISION_BY_ZERO: i32 = 400;
 const ERROR_CODE_INVALID_OPERATION: i32 = 401;
 const ERROR_CODE_INVALID_INPUT: i32 = 402;
@@ -20,7 +19,7 @@ impl CalcError {
         }
     }
 
-    fn message(&self) -> &'static str {
+    pub fn message(&self) -> &'static str {
         match self {
             CalcError::DivisionByZero => "division by zero",
             CalcError::InvalidOperation => "invalid operation",
