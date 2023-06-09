@@ -1,11 +1,13 @@
+// We start by including the modules which contain the functionality of our library.
 mod calc_error;
 mod calculator;
 
+// We import the Calculator and CalcError structs from our own modules, as well as some
+// necessary functionality from the pyo3 library.
 use crate::calc_error::CalcError;
 use crate::calculator::Calculator;
 use pyo3::create_exception;
 use pyo3::prelude::*;
-use pyo3::types::PyDict;
 
 // PyCalculator: Python binding for Calculator
 #[pyclass]
@@ -16,16 +18,13 @@ struct PyCalculator {
 #[pymethods]
 impl PyCalculator {
     #[new]
-    #[args(kwargs = "**")]
-    fn new(_kwargs: Option<&PyDict>) -> PyResult<PyCalculator> {
+    fn new() -> PyResult<PyCalculator> {
         Ok(PyCalculator {
             calc: Calculator::new(),
         })
     }
 
     fn add(&self, a: f64, b: f64) -> PyResult<f64> {
-        // let gil = Python::acquire_gil();
-        // let py = gil.python();
         match self.calc.add(a, b) {
             Ok(result) => Ok(result),
             Err(err) => Err(map_error(err)),
@@ -33,8 +32,6 @@ impl PyCalculator {
     }
 
     fn subtract(&self, a: f64, b: f64) -> PyResult<f64> {
-        // let gil = Python::acquire_gil();
-        // let py = gil.python();
         match self.calc.subtract(a, b) {
             Ok(result) => Ok(result),
             Err(err) => Err(map_error(err)),
@@ -42,8 +39,6 @@ impl PyCalculator {
     }
 
     fn multiply(&self, a: f64, b: f64) -> PyResult<f64> {
-        // let gil = Python::acquire_gil();
-        // let py = gil.python();
         match self.calc.multiply(a, b) {
             Ok(result) => Ok(result),
             Err(err) => Err(map_error(err)),
@@ -51,8 +46,6 @@ impl PyCalculator {
     }
 
     fn divide(&self, a: f64, b: f64) -> PyResult<f64> {
-        // let gil = Python::acquire_gil();
-        // let py = gil.python();
         match self.calc.divide(a, b) {
             Ok(result) => Ok(result),
             Err(err) => Err(map_error(err)),

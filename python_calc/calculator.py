@@ -13,4 +13,6 @@ try:
 except Exception as e:
     if type(e).__name__ == 'PyCalculatorError':
         print(f'Error Code: {e.args[0].code}, Message: {e.args[0].message}')
+    else:
+        print(e)
 

@@ -26,4 +26,10 @@ fn main() {
         Ok(result) => println!("{}", result),
         Err(err) => println!("Error: {}", err),
     }
+
+    // Attempt to calculate the Nan for add
+    match calc.add(std::f64::NAN, 2.0) {
+        Ok(result) => println!("{}", result),
+        Err(err) => println!("Error: {}", err),
+    }
 }
